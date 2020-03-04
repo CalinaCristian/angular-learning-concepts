@@ -1,0 +1,39 @@
+<div class="search">
+    <label for="searchField">Search for movie:</label>
+    <input
+        type="text"
+        id="searchField"
+        [formControl]="searchField"
+    />
+</div>
+
+<div class="loading-container" *ngIf="loading">
+    <ng-lottie [options]="loadingOptions"></ng-lottie>
+</div>
+
+<!-- <ng-container *ngIf="data$ | async as data">
+    <div class="consumer-container" *ngIf="!loading">
+        <div class="consumer-movie" *ngFor="let movie of data">
+            <div class="title">[{{movie.Year}}] {{movie.Title}}</div>
+            <div class="image">
+                <a [href]="getImdbLink(movie.imdbID)" target="_blank">
+                    <img class="movie-post" [src]="movie.Poster === 'N/A' ? '/assets/image-placeholder.jpg' : movie.Poster"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-container> -->
+<div class="consumer-container">
+    <div class="consumer-movie" *ngFor="let movie of data">
+        <div class="title">[{{movie.Year}}] {{movie.Title}}</div>
+        <div class="image">
+            <a [href]="getImdbLink(movie.imdbID)" target="_blank">
+                <img class="movie-post" [src]="movie.Poster === 'N/A' ? '/assets/image-placeholder.jpg' : movie.Poster"/>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="canLoadMore" class="load-more-button">
+    <button (click)="loadMore()">Load more...</button>
+</div>

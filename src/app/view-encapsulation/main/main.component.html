@@ -1,0 +1,16 @@
+<div class="encapsulation-types">
+    <div *ngFor="let option of options">
+        <input type="radio" [id]="option" [value]="option" [checked]="option === choice" (change)="choose(option)">
+        <label [for]="option">{{option[0].toUpperCase() + option.slice(1)}}</label><br>
+    </div>
+</div>
+
+<div class="encapsulated-class">
+    [PARENT] I don't have access to encapsulated class.
+</div>
+
+<div class="children">
+    <app-encapsulation-test-none *ngIf="choice === 'none'"></app-encapsulation-test-none>
+    <app-encapsulation-test-shadow *ngIf="choice === 'shadowDom'"></app-encapsulation-test-shadow>
+    <app-encapsulation-test-emulated *ngIf="choice === 'emulated'"></app-encapsulation-test-emulated>
+</div>

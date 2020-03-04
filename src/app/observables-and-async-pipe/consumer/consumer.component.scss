@@ -1,0 +1,42 @@
+.search {
+    display: flex;
+
+    & > label {
+        margin-right: 10px;
+    }
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+}
+
+.consumer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .consumer-movie {
+        padding: 25px;
+        text-align: center;
+
+        .title {
+            padding-bottom: 10px;
+            font-size: 18px;
+            max-width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .movie-post {
+            height: 400px;
+            width: 300px;
+        }
+    }
+}
+
+.load-more-button {
+    display: flex;
+    justify-content: center;
+}
