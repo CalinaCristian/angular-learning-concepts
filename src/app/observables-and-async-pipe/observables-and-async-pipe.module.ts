@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ConsumerComponent } from './consumer/consumer.component';
 import { Routes, RouterModule } from '@angular/router';
 import { LottieModule } from 'ngx-lottie';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RxPlaygroundComponent } from './rx-playground/rx-playground.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -14,12 +16,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ConsumerComponent],
+  declarations: [ConsumerComponent, RxPlaygroundComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     LottieModule.forRoot({ player: playerFactory, useCache: true }),
+    InfiniteScrollModule
   ],
   providers: [
   ]

@@ -1,3 +1,8 @@
+<div class="observable-playground">
+    <h3>Dump rxJs stuff here.</h3>
+    <app-rx-playground></app-rx-playground>
+</div>
+
 <div class="search">
     <label for="searchField">Search for movie:</label>
     <input
@@ -7,12 +12,15 @@
     />
 </div>
 
-<div class="loading-container" *ngIf="loading">
-    <ng-lottie [options]="loadingOptions"></ng-lottie>
-</div>
-
-<!-- <ng-container *ngIf="data$ | async as data">
-    <div class="consumer-container" *ngIf="!loading">
+<div
+    class="consumer-container"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="100"
+    (scrolled)="loadMore()"
+    [alwaysCallback]="true"
+>
+    <ng-container *ngIf="data$ | async as data">
         <div class="consumer-movie" *ngFor="let movie of data">
             <div class="title">[{{movie.Year}}] {{movie.Title}}</div>
             <div class="image">
@@ -21,19 +29,10 @@
                 </a>
             </div>
         </div>
-    </div>
-</ng-container> -->
-<div class="consumer-container">
-    <div class="consumer-movie" *ngFor="let movie of data">
-        <div class="title">[{{movie.Year}}] {{movie.Title}}</div>
-        <div class="image">
-            <a [href]="getImdbLink(movie.imdbID)" target="_blank">
-                <img class="movie-post" [src]="movie.Poster === 'N/A' ? '/assets/image-placeholder.jpg' : movie.Poster"/>
-            </a>
-        </div>
-    </div>
+    </ng-container>
 </div>
 
-<div *ngIf="canLoadMore" class="load-more-button">
-    <button (click)="loadMore()">Load more...</button>
+
+<div class="loading-container" *ngIf="loading">
+    <ng-lottie [options]="loadingOptions"></ng-lottie>
 </div>
