@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, Observer, Subscription } from 'rxjs';
-import { map, filter, takeLast, first, startWith } from 'rxjs/operators';
+import { map, filter, takeLast, first, startWith, scan, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rx-playground',
@@ -10,8 +10,7 @@ import { map, filter, takeLast, first, startWith } from 'rxjs/operators';
 })
 export class RxPlaygroundComponent implements OnInit {
   public data$: Observable<string>;
-  public data: string[] = [];
-  public childData: string[] = [];
+  public childData$: Observable<string[]>;
   public subscription: Subscription;
 
   constructor() {
@@ -36,17 +35,12 @@ export class RxPlaygroundComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.data$
-    .pipe(
-      startWith('here we go again')
-    )
-    .subscribe(v => {
-      this.data.push(v);
-    });
-
-    const childSubscription: Subscription = this.data$.subscribe(v => this.childData.push(v));
-    this.subscription.add(childSubscription);
-
-    setTimeout(() => this.subscription.unsubscribe(), 2010);
+    this.childData$ = this.data$.pipe(
+      startWith('Beginning accumulation of emmited values'),
+      scan((acc: string[], cur: string) => {
+        acc.push(cur);
+        return acc;
+      }, [])
+    );
   }
 }

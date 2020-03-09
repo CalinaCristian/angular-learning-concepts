@@ -21,7 +21,7 @@
     [alwaysCallback]="true"
 >
     <ng-container *ngIf="data$ | async as data">
-        <div class="consumer-movie" *ngFor="let movie of data">
+        <div class="consumer-movie" *ngFor="let movie of data.data">
             <div class="title">[{{movie.Year}}] {{movie.Title}}</div>
             <div class="image">
                 <a [href]="getImdbLink(movie.imdbID)" target="_blank">

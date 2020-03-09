@@ -1,0 +1,11 @@
+<input type="checkbox" [(ngModel)]="toggled"> Custom template
+
+<app-generic-item-view [items]="items">
+    <ng-template *ngIf="toggled" #itemTemplate let-items>
+        <div class="container">
+            <div *ngFor="let item of items; let index=index" class="item" [class.even]="index % 2 === 0">
+                {{item}}
+            </div>
+        </div>
+    </ng-template>
+</app-generic-item-view>

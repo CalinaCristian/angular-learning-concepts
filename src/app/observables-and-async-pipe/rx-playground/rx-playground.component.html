@@ -1,18 +1,15 @@
 <div class="flex">
     <div class="with-async-pipe">
-        <h4>With Async Pipe</h4>
+        <h4>Last emmited value</h4>
         <ng-container *ngIf="data$ | async as data">
             <div>{{data}}</div>
         </ng-container>
     </div>
 
     <div class="without-async-pipe">
-        <h4>Without Async Pipe [Parent]</h4>
-        <div *ngFor="let value of data">{{value}}</div>
-    </div>
-
-    <div class="without-async-pipe">
-        <h4>Without Async Pipe [Child]</h4>
-        <div *ngFor="let value of childData">{{value}}</div>
+        <h4>All emmited values</h4>
+        <ng-container *ngIf="childData$ | async as data">
+            <div *ngFor="let value of data">{{value}}</div>
+        </ng-container>
     </div>
 </div>
