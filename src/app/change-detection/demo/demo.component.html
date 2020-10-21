@@ -1,0 +1,13 @@
+<div class="app-input">
+  <input type="text" [value]="usePrimitives ? parentTitle : titles.parent" (input)="changeProp($event, 'parent')"/>
+  <input type="text" [value]="usePrimitives ? childTitle : titles.child" (input)="changeProp($event, 'child')"/>
+  <input type="text" [value]="usePrimitives ? grandChildTitle : titles.grandChild" (input)="changeProp($event, 'grandChild')"/>
+  <input type="checkbox" [(ngModel)]="usePrimitives" name="usePrimitives"/>
+  <label for="usePrimitives">Use primitives</label>
+  <input *ngIf="!usePrimitives" type="checkbox" [checked]="withReferrenceChange" (change)="withReferrenceToggle($event)" name="withReferrenceChange"/>
+  <label *ngIf="!usePrimitives" for="withReferrenceChange">Change Referrence</label>
+</div>
+<div class="flex">
+  <app-parent [titles]="titles" [parentTitle]="parentTitle" [childTitle]="childTitle" [grandChildTitle]="grandChildTitle" [usePrimitives]="usePrimitives"></app-parent>
+  <app-parent-with-on-push [titles]="titles" [parentTitle]="parentTitle" [childTitle]="childTitle" [grandChildTitle]="grandChildTitle" [usePrimitives]="usePrimitives"></app-parent-with-on-push>
+</div>

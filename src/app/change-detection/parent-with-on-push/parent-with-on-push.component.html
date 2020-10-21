@@ -1,0 +1,9 @@
+<div class="parent" #parent (click)="false">
+    <div>
+        <span>{{usePrimitives ? parentTitle : titles.parent}}</span>
+    </div>
+</div>
+<div class="line-container">
+    <div class="line"></div>
+</div>
+<app-child-with-on-push [titles]="titles" [childTitle]="childTitle" [grandChildTitle]="grandChildTitle" [usePrimitives]="usePrimitives"></app-child-with-on-push>

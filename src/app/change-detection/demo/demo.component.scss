@@ -1,0 +1,13 @@
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.app-input {
+    display: flex;
+    justify-content: center;
+
+    & > input {
+        font-size: 16px;
+    }
+}

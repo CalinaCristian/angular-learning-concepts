@@ -1,0 +1,5 @@
+<div class="child" #child (click)="false">{{usePrimitives ? childTitle : titles.child}}</div>
+<div class="line-container">
+    <div class="line"></div>
+</div>
+<app-grand-child [titles]="titles" [grandChildTitle]="grandChildTitle" [usePrimitives]="usePrimitives"></app-grand-child>

@@ -3,6 +3,10 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'change-detection',
+    loadChildren: () => import('./change-detection/change-detection.module').then(m => m.ChangeDetectionModule)
+  },
+  {
     path: 'view-encapsulation',
     loadChildren: () => import('./view-encapsulation/view-encapsulation.module').then(m => m.ViewEncapsulationModule),
   },

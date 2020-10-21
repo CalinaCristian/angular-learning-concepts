@@ -1,0 +1,38 @@
+.parent {
+    margin-top: 25px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 25px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: lightgrey;
+    }
+
+    &.highlight {
+        background-color: green;
+
+        &:hover {
+            background-color: lightgreen;
+        }
+    }
+}
+
+.line-container {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.line {
+    height: 100px;
+    width: 1px;
+    background-color: black;
+}

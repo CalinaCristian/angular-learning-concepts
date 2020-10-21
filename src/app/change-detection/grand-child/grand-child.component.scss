@@ -1,0 +1,23 @@
+.grand-child {
+    width: 200px;
+    height: 200px;
+    background-color: grey;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: lightgrey;
+    }
+
+    &.highlight {
+        background-color: green;
+
+        &:hover {
+            background-color: lightgreen;
+        }
+    }
+}
